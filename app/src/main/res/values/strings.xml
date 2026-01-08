@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Net Calc</string>
+    <string name="app_name">GoBoard</string>
+    <string name="language_label">GoBoard Keyboard</string>
 </resources>

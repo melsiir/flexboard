@@ -1,0 +1,80 @@
+package com.gboard.goboard;
+
+import android.inputmethodservice.InputMethodService;
+import android.inputmethodservice.Keyboard;
+import android.inputmethodservice.KeyboardView;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputConnection;
+
+public class GoBoardKeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
+
+    private KeyboardView kv;
+    private Keyboard keyboard;
+
+    @Override
+    public View onCreateInputView() {
+        kv = (KeyboardView) getLayoutInflater().inflate(R.layout.keyboard_view, null);
+        keyboard = new Keyboard(this, R.xml.qwerty_keyboard);
+        kv.setKeyboard(keyboard);
+        kv.setOnKeyboardActionListener(this);
+        return kv;
+    }
+
+    @Override
+    public void onPress(int primaryCode) {
+        // Handle key press
+    }
+
+    @Override
+    public void onRelease(int primaryCode) {
+        // Handle key release
+    }
+
+    @Override
+    public void onKey(int primaryCode, int[] keyCodes) {
+        InputConnection ic = getCurrentInputConnection();
+        if (ic == null) return;
+
+        switch (primaryCode) {
+            case Keyboard.KEYCODE_DELETE:
+                CharSequence selectedText = ic.getSelectedText(0);
+                if (TextUtils.isEmpty(selectedText)) {
+                    ic.deleteSurroundingText(1, 0);
+                } else {
+                    ic.commitText("", 1);
+                }
+                break;
+            case Keyboard.KEYCODE_SHIFT:
+                keyboard.setShifted(!keyboard.isShifted());
+                kv.invalidateAllKeys();
+                break;
+            case Keyboard.KEYCODE_DONE:
+                ic.sendKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_ENTER));
+                break;
+            default:
+                char code = (char) primaryCode;
+                ic.commitText(String.valueOf(code), 1);
+                break;
+        }
+    }
+
+    @Override
+    public void onText(CharSequence text) {
+        // Handle text input
+    }
+
+    @Override
+    public void swipeLeft() {}
+
+    @Override
+    public void swipeRight() {}
+
+    @Override
+    public void swipeDown() {}
+
+    @Override
+    public void swipeUp() {}
+}

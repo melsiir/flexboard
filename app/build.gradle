@@ -4,10 +4,10 @@ plugins {
 
 android {
     compileSdk 34
-	namespace "com.credit.calc"
-			
+	namespace "com.gboard.goboard"
+
     defaultConfig {
-        applicationId "com.credit.calc"
+        applicationId "com.gboard.goboard"
         minSdk 28
         targetSdk 34
         versionCode 1
