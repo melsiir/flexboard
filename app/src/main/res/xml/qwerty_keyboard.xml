@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
     android:keyWidth="10%p"
-    android:keyHeight="60dp"
-    android:horizontalGap="1dp"
-    android:verticalGap="1dp">
+    android:keyHeight="65dp"
+    android:horizontalGap="3dp"
+    android:verticalGap="3dp">
 
     <Row>
         <Key android:codes="113" android:keyLabel="q" android:keyEdgeFlags="left"/>
@@ -44,8 +44,8 @@
 
     <Row>
         <Key android:codes="32" android:keyLabel="SPACE" android:keyWidth="50%p" android:keyEdgeFlags="left"/>
-        <Key android:codes="46" android:keyLabel="."/>
-        <Key android:codes="10" android:keyLabel="ENTER" android:keyWidth="30%p" android:keyEdgeFlags="right"/>
+        <Key android:codes="46" android:keyLabel="." android:keyWidth="15%p"/>
+        <Key android:codes="10" android:keyLabel="ENTER" android:keyWidth="25%p" android:keyEdgeFlags="right"/>
     </Row>
 
 </Keyboard>

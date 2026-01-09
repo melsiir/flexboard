@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
+import android.view.HapticFeedbackConstants;
 
 public class GoBoardKeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
@@ -25,7 +26,10 @@ public class GoBoardKeyboardService extends InputMethodService implements Keyboa
 
     @Override
     public void onPress(int primaryCode) {
-        // Handle key press
+        // Provide haptic feedback on key press
+        if (kv != null) {
+            kv.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        }
     }
 
     @Override
@@ -67,7 +71,9 @@ public class GoBoardKeyboardService extends InputMethodService implements Keyboa
     }
 
     @Override
-    public void swipeLeft() {}
+    public void swipeLeft() {
+        // Handle swipe gestures if needed
+    }
 
     @Override
     public void swipeRight() {}
