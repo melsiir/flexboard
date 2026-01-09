@@ -60,7 +60,9 @@ public class GoBoardKeyboardService extends InputMethodService implements Keyboa
                 break;
             default:
                 char code = (char) primaryCode;
-                ic.commitText(String.valueOf(code), 1);
+                if (code != 0) {
+                    ic.commitText(String.valueOf(code), 1);
+                }
                 break;
         }
     }
