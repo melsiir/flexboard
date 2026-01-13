@@ -1,4 +1,4 @@
-package com.gboard.goboard;
+package com.melsiir.goboard;
 
 import android.inputmethodservice.InputMethodService;
 import android.inputmethodservice.Keyboard;
@@ -10,7 +10,7 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.view.HapticFeedbackConstants;
 
-public class GoBoardKeyboardService extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
+public class GoBoardIME extends InputMethodService implements KeyboardView.OnKeyboardActionListener {
 
     private KeyboardView kv;
     private Keyboard keyboard;

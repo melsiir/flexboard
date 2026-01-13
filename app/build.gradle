@@ -4,10 +4,11 @@ plugins {
 
 android {
     compileSdk 34
-	namespace "com.gboard.goboard"
+    // buildToolsVersion "34.0.4"
+  	namespace "com.melsiir.goboard"
 
     defaultConfig {
-        applicationId "com.gboard.goboard"
+        applicationId "com.melsiir.goboard"
         minSdk 28
         targetSdk 34
         versionCode 1
@@ -24,7 +25,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-	
+
 	buildFeatures {
         viewBinding false
         buildConfig true
@@ -34,5 +35,5 @@ android {
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.7.0-alpha03'
     implementation 'com.google.android.material:material:1.12.0-alpha03'
-	implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha13'	    
+	implementation 'androidx.constraintlayout:constraintlayout:2.2.0-alpha13'
 }

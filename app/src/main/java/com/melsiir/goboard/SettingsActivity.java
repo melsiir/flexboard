@@ -1,15 +1,18 @@
-package com.gboard.goboard;
+package com.melsiir.goboard;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.view.View;
 import android.graphics.Color;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -21,29 +24,21 @@ public class SettingsActivity extends AppCompatActivity {
         LinearLayout layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
         layout.setPadding(56, 56, 56, 56);
-        layout.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_light_surface));
+        layout.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_surface));
 
         // Add title
         TextView title = new TextView(this);
-        title.setText("GoBoard Coding Keyboard");
+        title.setText("GoBoard");
         title.setTextSize(24);
-        title.setTextColor(ContextCompat.getColor(this, R.color.md_theme_light_primary));
+        title.setTextColor(ContextCompat.getColor(this, R.color.md_theme_primary));
         title.setPadding(0, 0, 0, 32);
         layout.addView(title);
-
-        // Add description
-        TextView description = new TextView(this);
-        description.setText("A keyboard optimized for coding with easy access to programming symbols and operators. Enable GoBoard Keyboard in your device settings to start using it.");
-        description.setTextSize(16);
-        description.setTextColor(ContextCompat.getColor(this, R.color.md_theme_light_onSurface));
-        description.setPadding(0, 0, 0, 48);
-        layout.addView(description);
 
         // Add button to open keyboard settings
         Button settingsButton = new Button(this);
         settingsButton.setText("Open Keyboard Settings");
-        settingsButton.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_light_primary));
-        settingsButton.setTextColor(ContextCompat.getColor(this, R.color.md_theme_light_onPrimary));
+        settingsButton.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_primary));
+        settingsButton.setTextColor(ContextCompat.getColor(this, R.color.md_theme_onPrimary));
         settingsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,17 +51,21 @@ public class SettingsActivity extends AppCompatActivity {
         // Add button to enable keyboard directly
         Button enableButton = new Button(this);
         enableButton.setText("Enable GoBoard Keyboard");
-        enableButton.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_light_secondaryContainer));
-        enableButton.setTextColor(ContextCompat.getColor(this, R.color.md_theme_light_onSecondaryContainer));
+        enableButton.setBackgroundColor(ContextCompat.getColor(this, R.color.md_theme_secondaryContainer));
+        enableButton.setTextColor(ContextCompat.getColor(this, R.color.md_theme_onSecondaryContainer));
         enableButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Settings.ACTION_INPUT_METHOD_SETTINGS);
-                startActivity(intent);
+                InputMethodManager imeManager = (InputMethodManager) getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+                imeManager.showInputMethodPicker();
             }
         });
         layout.addView(enableButton);
-
+        
+       // TextView paragraphType = new TextView(this);
+         EditText testEditText = new EditText(this);
+         testEditText.setHint("Test The Keyboard Here");
+         layout.addView(testEditText);
         setContentView(layout);
     }
 }
